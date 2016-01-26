@@ -5,7 +5,7 @@ let multer = require('koa-multer')
 let path = require('path')
 
 
-class MulterHook extends Hook {
+module.exports = class MulterHook extends Hook {
 
   constructor(proton) {
     super(proton)
