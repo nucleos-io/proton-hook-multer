@@ -17,7 +17,7 @@ module.exports = class MulterHook extends Hook {
 
   initialize() {
     this.proton.use({
-      dest: path.join(this.app.path, '../.tmp')
+      dest: path.join(this.proton.app.path, '../.tmp')
     })
   }
 
