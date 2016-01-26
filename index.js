@@ -16,9 +16,9 @@ module.exports = class MulterHook extends Hook {
   }
 
   initialize() {
-    this.proton.use({
+    this.proton.use(multer({
       dest: path.join(this.proton.app.path, '../.tmp')
-    })
+    }))
   }
 
   validate() {
