@@ -1,6 +1,6 @@
 {
-  "name": "proton-hook-multer",
-  "version": "1.0.3",
+  "name": "proton-quark-multer",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "koa-multer": "^0.0.2",
-    "proton-hook": "^1.0.0"
+    "proton-quark": "^1.0.0"
   }
 }

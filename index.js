@@ -1,30 +1,22 @@
 'use strict'
 
-let Hook = require('proton-hook')
+let Quark = require('proton-quark')
 let multer = require('koa-multer')
 let path = require('path')
 
 
-module.exports = class MulterHook extends Hook {
+module.exports = class MulterQuark extends Quark {
 
   constructor(proton) {
     super(proton)
   }
 
-  configure() {
-    return Promise.resolve()
-  }
-
   initialize() {
+    let dest = path.join(this.proton.app.path, '../.tmp')
     this.proton.use(multer({
-      dest: path.join(this.proton.app.path, '../.tmp')
+      dest: dest
     }))
   }
-
-  validate() {
-    return Promise.resolve()
-  }
-
 
 
 }
