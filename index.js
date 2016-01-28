@@ -14,7 +14,8 @@ module.exports = class MulterQuark extends Quark {
   initialize() {
     let dest = path.join(this.proton.app.path, '../.tmp')
     this.proton.middleware.unshift(multer({
-      dest: dest
+      dest: dest,
+      putSingleFilesInArray: true
     }))
   }
 
