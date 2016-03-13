@@ -11,12 +11,32 @@ module.exports = class MulterQuark extends Quark {
     super(proton)
   }
 
+  configure() {
+    this.opts = this.proton.app.config.multer
+  }
+
+  validate() {
+    return this.opts
+  }
+
   initialize() {
-    let dest = path.join(this.proton.app.path, '../.tmp')
-    this.proton.middleware.unshift(multer({
-      dest: dest,
-      putSingleFilesInArray: true
-    }))
+    this.addMulter()
+  }
+
+  addMulter() {
+    // after add multer middleware
+    this.proton.middleware.unshift(function * (next) {
+      this.request.body = this.body
+      yield next
+    })
+    // multer middleware
+    this.proton.middleware.unshift(multer(this.opts))
+
+    // Before add multer middleware
+    this.proton.middleware.unshift(function * (next) {
+      this.body = this.request.body
+      yield next
+    })
   }
 
 
