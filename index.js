@@ -26,7 +26,8 @@ module.exports = class MulterQuark extends Quark {
   addMulter() {
     // after add multer middleware
     this.proton.middleware.unshift(function * (next) {
-      this.request.body = this.body
+      this.request.body = this.data
+      delete this.data
       yield next
     })
     // multer middleware
@@ -34,7 +35,7 @@ module.exports = class MulterQuark extends Quark {
 
     // Before add multer middleware
     this.proton.middleware.unshift(function * (next) {
-      this.body = this.request.body
+      this.data = this.request.body
       yield next
     })
   }
